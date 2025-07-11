@@ -16,9 +16,100 @@
             "uniqueID": "e5167e5c-6dea-4e5b-aaf0-8ed7b97b4d29",
             "ioValues": [],
             "description": "Connect geometry here to make it available in the next level up. "
+        },
+        {
+            "atomType": "Rectangle",
+            "name": "Rectangle",
+            "x": 0.2419855222337125,
+            "y": 0.4782608695652174,
+            "uniqueID": "d0456965-aafc-4751-957b-fe8f2c2c9896",
+            "ioValues": [
+                {
+                    "name": "x length",
+                    "ioValue": 1100
+                },
+                {
+                    "name": "y length",
+                    "ioValue": 600
+                }
+            ],
+            "description": "Creates a new rectangle."
+        },
+        {
+            "atomType": "Extrude",
+            "name": "Extrude",
+            "x": 0.3572905894519131,
+            "y": 0.5181159420289855,
+            "uniqueID": "872ebfad-53db-4e72-a9d6-3439ca64e7a9",
+            "ioValues": [
+                {
+                    "name": "geometry",
+                    "ioValue": "d0456965-aafc-4751-957b-fe8f2c2c9896"
+                },
+                {
+                    "name": "height",
+                    "ioValue": 18
+                }
+            ],
+            "description": "Extrudes a 2D shape. Input can be negitive. "
+        },
+        {
+            "atomType": "Circle",
+            "name": "Circle",
+            "x": 0.3650465356773527,
+            "y": 0.7717391304347826,
+            "uniqueID": "ce1d67f7-3cd1-4ee4-8e67-1cde9517048c",
+            "ioValues": [
+                {
+                    "name": "diameter",
+                    "ioValue": 600
+                }
+            ],
+            "description": "Creates a new circle."
+        },
+        {
+            "atomType": "Fusion",
+            "name": "Fusion",
+            "x": 0.43691830403309206,
+            "y": 0.5652173913043479,
+            "uniqueID": "58be7529-39d1-414c-8fa2-c5521c71adb1",
+            "ioValues": [
+                {
+                    "name": "Shape 1",
+                    "ioValue": "872ebfad-53db-4e72-a9d6-3439ca64e7a9"
+                },
+                {
+                    "name": "Shape 2",
+                    "ioValue": "ce1d67f7-3cd1-4ee4-8e67-1cde9517048c"
+                }
+            ],
+            "description": "Pick between assembly and fusion to join input geometries. Assembly takes multiple shapes together into one, shapes higher in the inputs list will cut into shapes lower on the input list where they overlap. Fusion takes all shapes or sketches and fuses them permanently into a single shape",
+            "unionType": "Fusion"
         }
     ],
-    "allConnectors": [],
+    "allConnectors": [
+        {
+            "ap1Name": "geometry",
+            "ap2Name": "geometry",
+            "ap2Primary": true,
+            "ap1ID": "d0456965-aafc-4751-957b-fe8f2c2c9896",
+            "ap2ID": "872ebfad-53db-4e72-a9d6-3439ca64e7a9"
+        },
+        {
+            "ap1Name": "geometry",
+            "ap2Name": "Shape 1",
+            "ap2Primary": false,
+            "ap1ID": "872ebfad-53db-4e72-a9d6-3439ca64e7a9",
+            "ap2ID": "58be7529-39d1-414c-8fa2-c5521c71adb1"
+        },
+        {
+            "ap1Name": "geometry",
+            "ap2Name": "Shape 2",
+            "ap2Primary": false,
+            "ap1ID": "ce1d67f7-3cd1-4ee4-8e67-1cde9517048c",
+            "ap2ID": "58be7529-39d1-414c-8fa2-c5521c71adb1"
+        }
+    ],
     "unitsKey": "MM",
     "fileTypeVersion": 1,
     "compiledBom": {},
